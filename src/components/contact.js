@@ -22,7 +22,7 @@ export default class IndexPage extends React.Component {
 
   render() {
     return (
-      <form name="contact" data-netlify="true">
+      <form name="contact" netlify>
         <label>
           Name
           <input type="text" name="name" id="name" />
