@@ -1,47 +1,39 @@
 import React from "react"
 
-export default class IndexPage extends React.Component {
-  state = {
-    firstName: "",
-    lastName: "",
+export default function Contact() {
+  const [state, setState] = React.useState({})
+
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value })
   }
 
-  handleInputChange = event => {
-    const target = event.target
-    const value = target.value
-    const name = target.name
-    this.setState({
-      [name]: value,
-    })
-  }
-
-  handleSubmit = event => {
-    event.preventDefault()
-    alert(`Welcome ${this.state.firstName} ${this.state.lastName}!`)
-  }
-
-  render() {
-    return (
-    <form name="contact" method="POST" data-netlify="true">
+  return (
+    <form name="contact" method="post" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact" />
       <p>
-        <label>Your Name: <input type="text" name="name" /></label>   
+        <label>
+          Nome:
+          <br />
+          <input type="text" name="name" onChange={handleChange} />
+        </label>
       </p>
       <p>
-        <label>Your Email: <input type="email" name="email" /></label>
+        <label>
+          E-mail:
+          <br />
+          <input type="email" name="email" onChange={handleChange} />
+        </label>
       </p>
       <p>
-        <label>Your Role: <select name="role[]" multiple>
-          <option value="leader">Leader</option>
-          <option value="follower">Follower</option>
-        </select></label>
-      </p>
-      <p>
-        <label>Message: <textarea name="message"></textarea></label>
+        <label>
+          Mensagem:
+          <br />
+          <textarea name="message" onChange={handleChange} />
+        </label>
       </p>
       <p>
         <button type="submit">Send</button>
       </p>
     </form>
-    )
-  }
+  )
 }
