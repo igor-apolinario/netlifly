@@ -1,5 +1,7 @@
 import React from "react"
 
+import "./contact.css"
+
 export default function Contact() {
   const [state, setState] = React.useState({})
 
@@ -8,8 +10,11 @@ export default function Contact() {
   }
 
   return (
-    <form name="contact" method="post" data-netlify="true">
+    <form name="contact" method="post" data-netlify="true" data-netlify-recaptcha="true">
       <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden">
+        <label>Não preencha este campo se você for um humano: <input name="bot-field" /></label>
+      </p>
       <p>
         <label>
           Nome:
